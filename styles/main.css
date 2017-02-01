@@ -1,23 +1,32 @@
 @import "fonts/fonts.css";
 
+html {
+  width: 415px;
+  height: 640px;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 body {
   background-color: #000;
   margin: 0;
   overflow: hidden;
-  font-family: Markus-Ink, FontAwesome, fantasy, tahoma;
-  width: 100vw;
-  height: 100vh;
+  font-family: Markus-Ink, fantasy, tahoma;
+  overflow: hidden;
 }
 
 body:before {
   content: attr(story-points);
   display: block;
-  width: 100vw;
-  height: 100vh;
-  line-height: 100vh;
+  width: 415px;
+  height: 640px;
+  line-height: 640px;
   color: white;
-  font-size: 80vh;
-  padding-top: 10vh;
+  font-size: 512px;
+  padding-top: 64px;
   position: absolute;
   text-align: center;
   transition: all 300ms 1s ease;

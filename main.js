@@ -17,7 +17,14 @@ var container = document.getElementById('container');
 
 var clickPosition = [imageWidth * 0.5, imageHeight * 0.5];
 
+var shaker = new Shake({
+    threshold: 6, // optional shake strength threshold
+    timeout: 500 // optional, determines the frequency of event generation
+});
+
 window.onload = function() {
+    shaker.start();
+
     TweenMax.set(container, {perspective:500});
 
     // images from reddit/r/wallpapers
@@ -51,7 +58,7 @@ window.onload = function() {
 function imagesLoaded() {
     placeImage(false);
     triangulate();
-    shatter();
+    shatter(enableSelectMode);
 }
 
 function placeImage(transitionIn) {
@@ -65,6 +72,8 @@ function placeImage(transitionIn) {
     if (transitionIn !== false) {
         TweenMax.fromTo(image, 0.75, {y:-1000}, {y:0, ease:Back.easeOut});
     }
+
+    window.scrollTop = 0;
 }
 
 function imageClickHandler(event) {
@@ -113,11 +122,15 @@ function triangulate() {
     indices = Delaunay.triangulate(vertices);
 }
 
-function shatter() {
+function shatter(callback) {
     var p0, p1, p2,
         fragment;
 
-    var tl0 = new TimelineMax({onComplete: shatterCompleteHandler});
+    var tl0 = new TimelineMax({
+      onComplete: function() {
+        shatterCompleteHandler(callback);
+      }
+    });
 
     for (var i = 0; i < indices.length; i += 3) {
         p0 = vertices[indices[i + 0]];
@@ -155,7 +168,7 @@ function shatter() {
     image.removeEventListener('click', imageClickHandler);
 }
 
-function shatterCompleteHandler() {
+function shatterCompleteHandler(callback) {
     // add pooling?
     fragments.forEach(function(f) {
         container.removeChild(f.canvas);
@@ -165,6 +178,8 @@ function shatterCompleteHandler() {
     indices.length = 0;
 
     document.body.className = 'points-revealed';
+
+    callback && callback();
 }
 
 //////////////
@@ -239,6 +254,9 @@ Fragment.prototype = {
     }
 };
 
+window.onresize = function() {
+    window.scrollTop = 0;
+};
 
 function changeNumber (value) {
   document.body.setAttribute('story-points', value);
@@ -253,5 +271,23 @@ function enableSelectMode() {
 function bodyClickHandler() {
   if (document.body.className === 'points-revealed') {
     enableSelectMode();
+  }
+}
+
+window.addEventListener('shake', shakeEventDidOccur, false);
+
+//function to call when shake occurs
+function shakeEventDidOccur () {
+  if (document.body.className === 'select-on') {
+    return;
+  }
+
+  if (document.body.className === 'points-revealed') {
+    enableSelectMode();
+  } else {
+    imageClickHandler({
+      clientX: Math.random() * imageWidth,
+      clientY: Math.random() * imageHeight
+    });
   }
 }

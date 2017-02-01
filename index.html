@@ -2,13 +2,12 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="height=device-width, initial-scale=1 max-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" href="./bower_components/fontawesome/css/font-awesome.min.css" />
   <link rel="stylesheet" href="./styles/main.css" />
   <title>Dixit (scrum) Poker - Shattering Story Points</title>
 </head>
-<body translate="no" story-points="3" ontouchstart="bodyClickHandler()">
+<body translate="no" ontouchstart="bodyClickHandler()" onclick="bodyClickHandler()">
 
   <div id="container"></div>
   <select id="select" onchange="changeNumber(this.value)">
@@ -23,7 +22,7 @@
     <option value="20">20</option>
     <option value="40">40</option>
     <option value="?">?</option>
-    <option value="\f0f4">☕</option>
+    <option value="🍶">🍶</option>
   </select>
 
   <script src="./bower_components/delaunay-fast/delaunay.js"></script>
