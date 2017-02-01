@@ -1,0 +1,82 @@
+@import "fonts/fonts.css";
+
+body {
+  background-color: #000;
+  margin: 0;
+  overflow: hidden;
+  font-family: Markus-Ink, FontAwesome, fantasy, tahoma;
+  width: 100vw;
+  height: 100vh;
+}
+
+body:before {
+  content: attr(story-points);
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  line-height: 100vh;
+  color: white;
+  font-size: 80vh;
+  padding-top: 10vh;
+  position: absolute;
+  text-align: center;
+  transition: all 300ms 1s ease;
+}
+
+canvas {
+  position: absolute;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+}
+
+img {
+  position: absolute;
+  cursor: pointer;
+}
+
+#container {
+  position: absolute;
+  height: 640px;
+  width: 415px;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  transition: all 300ms ease;
+  perspective: 500px;
+}
+
+#select {
+  opacity: 0;
+  transition: all 300ms ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.0001);
+  height: 2em;
+  width: 3em;
+  text-align: center;
+  font-size: 3em;
+  background: #fff;
+}
+
+.select-on #select {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+
+.select-on #container {
+  opacity: 0;
+}
+
+body.select-on:before,
+body.points-revealed:before {
+  transition-delay: 0s !important;
+}
+
+body.select-on:before {
+  opacity: 0;
+}

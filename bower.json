@@ -1,0 +1,25 @@
+{
+  "name": "dixit-poker",
+  "version": "0.0.0",
+  "homepage": "https://github.com/gion/dixit-poker",
+  "authors": [
+    "gion <bogdan.gradinariu@thinslices.com>"
+  ],
+  "moduleType": [
+    "globals"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "delaunay-fast": "~1.0.1",
+    "shake.js": "~1.2.2",
+    "gsap": "~1.19.1",
+    "fontawesome": "~4.7.0"
+  }
+}

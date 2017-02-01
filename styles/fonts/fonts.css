@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Markus-Ink';
+    src:url('Markus-Ink.ttf.woff') format('woff'),
+        url('Markus-Ink.ttf.svg#Markus-Ink') format('svg'),
+        url('Markus-Ink.ttf.eot'),
+        url('Markus-Ink.ttf.eot?#iefix') format('embedded-opentype');
+    font-weight: normal;
+    font-style: normal;
+}
