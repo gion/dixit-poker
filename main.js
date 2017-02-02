@@ -2,8 +2,7 @@
 
 const TWO_PI = Math.PI * 2;
 
-var images = [],
-    imageIndex = 0;
+var images = [];
 
 var image,
     imageWidth = 415,
@@ -27,15 +26,15 @@ window.onload = function() {
 
     TweenMax.set(container, {perspective:500});
 
-    // images from reddit/r/wallpapers
     var urls = [
-            'http://c-raine.com/wp-content/uploads/2014/03/IMG_4048.jpg',
-            'http://c-raine.com/wp-content/uploads/2013/11/IMG_0374.jpg',
-            'http://c-raine.com/wp-content/uploads/2013/11/IMG_0370.jpg',
-            'https://s-media-cache-ak0.pinimg.com/736x/b3/10/c4/b310c49ada739d4fce95e74467dcbb06.jpg'
-            // 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/crayon.jpg',
-            // 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/spaceship.jpg',
-            // 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/dj.jpg',
+            './images/dixit8.jpg',
+            './images/dixit1.jpg',
+            './images/dixit2.jpg',
+            './images/dixit3.jpg',
+            './images/dixit4.jpg',
+            './images/dixit5.jpg',
+            './images/dixit6.jpg',
+            './images/dixit7.jpg'
             // 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/175711/chicken.jpg'
         ],
         image,
@@ -62,11 +61,16 @@ function imagesLoaded() {
 }
 
 function placeImage(transitionIn) {
-    image = images[imageIndex];
+    var newImage = image;
 
-    if (++imageIndex === images.length) imageIndex = 0;
+    while (newImage === image) {
+        image = images[Math.floor(Math.random() * images.length)];
+    }
+
+    // if (++imageIndex === images.length) imageIndex = 0;
 
     image.addEventListener('click', imageClickHandler);
+    image.addEventListener('touchstart', imageClickHandler);
     container.appendChild(image);
 
     if (transitionIn !== false) {
@@ -167,6 +171,7 @@ function shatter(callback) {
 
     container.removeChild(image);
     image.removeEventListener('click', imageClickHandler);
+    image.removeEventListener('touchstart', imageClickHandler);
 }
 
 function shatterCompleteHandler(callback) {
