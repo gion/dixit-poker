@@ -127,6 +127,7 @@ function shatter(callback) {
         fragment;
 
     var tl0 = new TimelineMax({
+      onStart: playSmashSound,
       onComplete: function() {
         shatterCompleteHandler(callback);
       }
@@ -290,4 +291,8 @@ function shakeEventDidOccur () {
       clientY: Math.random() * imageHeight
     });
   }
+}
+
+function playSmashSound() {
+    document.getElementById('smash').play();
 }
