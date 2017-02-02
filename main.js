@@ -70,7 +70,7 @@ function placeImage(transitionIn) {
     container.appendChild(image);
 
     if (transitionIn !== false) {
-        TweenMax.fromTo(image, 0.75, {y:-1000}, {y:0, ease:Back.easeOut});
+        TweenMax.fromTo(image, 0.75, {y:-1000, rotationX: -180, rotationY: -90}, {y:0, rotationX: 0, rotationY: 0, ease:Back.easeOut});
     }
 
     window.scrollTop = 0;
