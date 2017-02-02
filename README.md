@@ -1,6 +1,7 @@
 # dixit-poker
-It's a simple scrum poker app that uses very nice illustrations from the dixit game.  
-*Disclaimer* it has sounds. Mute the phone to turn the sounds off for now.
+It's a simple scrum poker app that uses very nice illustrations from the dixit game.   
+  
+**Disclaimer** it has sounds. Mute the phone to turn the sounds off for now.
 
 Inspired from [Szenia Zadvornykh's codepen](https://codepen.io/zadvorsky/pen/dILAG).
 
